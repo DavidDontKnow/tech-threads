@@ -45,3 +45,8 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
+
+
+// Q: what does this error mean "typeError: Router.use() requires a middleware function but got a Object"? and how do I fix it?
+
+

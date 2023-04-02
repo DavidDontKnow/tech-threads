@@ -140,3 +140,6 @@ router.get('/comments/:id', withAuth, async (req, res) => {
 });
 
 
+
+// Export routes for server.js to use.
+module.exports = router;
