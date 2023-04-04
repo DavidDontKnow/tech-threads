@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Post, Comments } = require('../models');
+const { User, Post, Comment } = require('../models');
 
 const userData = require('./userData.json');
 const postData = require('./postData.json');
@@ -7,6 +7,7 @@ const commentsData = require('./commentData.json');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
+    // add user password tp bulkCreate method
 
     const users = await User.bulkCreate(userData, {
         individualHooks: true,
@@ -21,7 +22,7 @@ const seedDatabase = async () => {
     }
 
     for (const comment of commentsData) {
-        await Comments.create({
+        await Comment.create({
             ...comment,
             user_id: users[Math.floor(Math.random() * users.length)].id,
         });
